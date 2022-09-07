@@ -23,7 +23,7 @@ function OAuth() {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    cursor: ${(props) => (props.cursor ? props.cursor : "pointer")};
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 2px;
@@ -58,18 +58,25 @@ const Or = styled.span`
   margin-bottom: 10px;
 `
 
+ const google = () => {
+
+  window.open("http://localhost:8080/auth/google", "_self");
+
+ }
+
+
   return (
     <Container>
       <Title>Devam etmek için Spotify'da oturum aç.</Title>
-      <AuthItem bg="3b5998">
+      <AuthItem cursor="not-allowed" bg="3b5998">
         <Icon src={Faceb} />
         Facebook ile devam et
       </AuthItem>
-      <AuthItem bg="000">
+      <AuthItem cursor="not-allowed" bg="000">
         <Icon src={AppleLogo} />
         Apple ile devam et
       </AuthItem>
-      <AuthItem bg="fff" color="555">
+      <AuthItem bg="fff" color="555" onClick={google}>
         <Icon src={Googe} />
         Google ile devam et
       </AuthItem>
